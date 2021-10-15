@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TodoApp.Models.Todo>
+
+@{
+    Layout = null;
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App </title>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <header>Todo List</header>
+        <form action="/" method="post">
+
+            <div class="inputField">
+                <input asp-action="Index" type="text" name="getTask" placeholder="Add your new todo">
+                <button><i class="fas fa-plus"></i></button>
+            </div>
+
+            <ul class="todoList">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        @item.Desc
+                        <button type="submit" asp-action="Delete" asp-route-id="@item.ID"><i class="fa fa-trash"></i></button>
+                    </li>
+                }
+            </ul>
+
+            <div class="footer">
+                <span>You have @Model.Count() pending tasks</span>
+                <button type="submit" asp-action="Delete">Clear All</button>
+            </div>
+
+        </form>
+    </div>
+</body>
