@@ -15,6 +15,15 @@ namespace TodoApp.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var tasks = _context.Todos.ToList();
+
+            return View(tasks);
+        }
+
+        [HttpPost]
         public IActionResult Index(string getTask)
         {
             if (getTask != null)
@@ -28,9 +37,7 @@ namespace TodoApp.Controllers
                 _context.SaveChanges();
             }
 
-            var tasks = _context.Todos.ToList();
-
-            return View(tasks);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
