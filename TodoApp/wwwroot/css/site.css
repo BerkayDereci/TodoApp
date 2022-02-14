@@ -111,6 +111,7 @@ body {
         border-radius: 0 3px 3px 0;
         cursor: pointer;
         transition: all 0.2s ease;
+        top:0
     }
 
     .todoList li:hover button {
